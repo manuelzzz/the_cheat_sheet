@@ -2,7 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import { capitalize, parseCheatSheetId } from '../../../config/content';
-import { withBase } from '../../../config/site';
+import { githubEditUrl, withBase } from '../../../config/site';
 
 export async function getStaticPaths() {
   const entries = await getCollection('cheatsheets');
@@ -11,13 +11,14 @@ export async function getStaticPaths() {
     const { locale, category, slug } = parseCheatSheetId(entry.id);
     return {
       params: { locale, category, slug },
-      props: { entry, locale, category },
+      props: { entry, locale, category, slug },
     };
   });
 }
 
-const { entry, locale, category } = Astro.props;
+const { entry, locale, category, slug } = Astro.props;
 const { Content } = await render(entry);
+const editUrl = githubEditUrl(`content/${locale}/${category}/${slug}.md`);
 ---
 
 <Layout
@@ -25,12 +26,22 @@ const { Content } = await render(entry);
   description={entry.data.description}
   locale={locale}
 >
-  <a
-    href={withBase(`/${locale}/${category}`)}
-    class="text-sm text-slate-600 hover:underline"
-  >
-    &larr; {capitalize(category)}
-  </a>
+  <div class="flex items-center justify-between gap-4">
+    <a
+      href={withBase(`/${locale}/${category}`)}
+      class="text-sm text-slate-600 hover:underline"
+    >
+      &larr; {capitalize(category)}
+    </a>
+    <a
+      href={editUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-sm text-slate-500 hover:text-slate-900 hover:underline"
+    >
+      Edit this page
+    </a>
+  </div>
   <h1 class="mt-2 text-3xl font-semibold">{entry.data.title}</h1>
   {
     entry.data.description && (
