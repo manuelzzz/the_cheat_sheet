@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import { capitalize, parseCheatSheetId } from '../../../config/content';
 import { githubEditUrl, withBase } from '../../../config/site';
+import CopyCodeButtons from '../../../components/CopyCodeButtons.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('cheatsheets');
@@ -53,4 +54,14 @@ const editUrl = githubEditUrl(`content/${locale}/${category}/${slug}.md`);
       <Content />
     </article>
   </div>
+  <h1 class="mt-2 text-3xl font-semibold">{entry.data.title}</h1>
+  {
+    entry.data.description && (
+      <p class="mt-2 text-slate-600">{entry.data.description}</p>
+    )
+  }
+  <article class="prose prose-slate mt-8 max-w-none">
+    <Content />
+  </article>
+  <CopyCodeButtons />
 </Layout>
