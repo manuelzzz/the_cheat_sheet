@@ -36,3 +36,8 @@ SELECT * FROM events WHERE payload @> '{"type": "signup"}';
 CREATE INDEX idx_events_created_at ON events (created_at);
 CREATE INDEX idx_events_payload ON events USING GIN (payload);
 ```
+
+## References
+
+- [PostgreSQL Documentation](https://www.postgresql.org/docs/)
+- [psql Reference](https://www.postgresql.org/docs/current/app-psql.html)

@@ -33,3 +33,8 @@ class Saudacao extends StatelessWidget {
 
 - `setState` — estado local do widget.
 - `Provider` / `Riverpod` — estado compartilhado da aplicação.
+
+## References
+
+- [Documentação do Flutter](https://docs.flutter.dev)
+- [Catálogo de Widgets do Flutter](https://docs.flutter.dev/ui/widgets)

@@ -39,3 +39,8 @@ git restore <file>              # discard unstaged changes
 git reset --soft HEAD~1          # undo last commit, keep changes staged
 git revert <commit>                # create a new commit that undoes one
 ```
+
+## References
+
+- [Git Documentation](https://git-scm.com/doc)
+- [Git Reference](https://git-scm.com/docs)

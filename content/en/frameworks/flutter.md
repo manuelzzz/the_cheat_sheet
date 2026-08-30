@@ -33,3 +33,8 @@ class Greeting extends StatelessWidget {
 
 - `setState` — local widget state.
 - `Provider` / `Riverpod` — shared app state.
+
+## References
+
+- [Flutter Documentation](https://docs.flutter.dev)
+- [Flutter Widget Catalog](https://docs.flutter.dev/ui/widgets)

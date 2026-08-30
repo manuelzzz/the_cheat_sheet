@@ -29,3 +29,8 @@ description: Essential keyboard shortcuts and features for Visual Studio Code.
 - `Cmd+F` / `Ctrl+F` — find in file.
 - `Cmd+Shift+F` / `Ctrl+Shift+F` — find in workspace.
 - `Cmd+G` / `Ctrl+G` — go to line.
+
+## References
+
+- [Visual Studio Code Documentation](https://code.visualstudio.com/docs)
+- [Default Keyboard Shortcuts](https://code.visualstudio.com/docs/reference/default-keybindings)

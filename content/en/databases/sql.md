@@ -36,3 +36,8 @@ INSERT INTO users (name, email) VALUES ('Ada', 'ada@example.com');
 UPDATE users SET email = 'new@example.com' WHERE id = 1;
 DELETE FROM users WHERE id = 1;
 ```
+
+## References
+
+- [SQL Standard Overview (ISO/IEC 9075)](https://www.iso.org/standard/76583.html)
+- [MDN SQL Glossary](https://developer.mozilla.org/en-US/docs/Glossary/SQL)

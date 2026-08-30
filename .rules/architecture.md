@@ -73,3 +73,23 @@ Do not store:
 These values are derived from the file path.
 
 Frontmatter should only contain metadata that cannot be inferred from the filesystem.
+
+## References
+
+Every cheat sheet ends with a `## References` section linking to
+authoritative sources (official documentation first, reputable secondary
+sources otherwise).
+
+```markdown
+## References
+
+- [Official Documentation](https://example.com)
+```
+
+This is plain Markdown content, not frontmatter — it requires no schema
+changes and is what a future content-validation check (e.g. verifying the
+section exists, links resolve) would target.
+
+The heading itself stays in English (`## References`) across all locales so
+tooling can match it literally; only the linked source titles are
+translated.

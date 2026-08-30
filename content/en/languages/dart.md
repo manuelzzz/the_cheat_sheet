@@ -26,3 +26,8 @@ void greet({required String name}) {
 - `?` marks a type as nullable.
 - `!` asserts a value is non-null.
 - `??` provides a fallback for a null value.
+
+## References
+
+- [Dart Documentation](https://dart.dev/guides)
+- [Dart Language Tour](https://dart.dev/language)

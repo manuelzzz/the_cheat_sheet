@@ -38,3 +38,8 @@ docker compose up -d      # start services in the background
 docker compose down         # stop and remove services
 docker compose logs -f        # follow logs for all services
 ```
+
+## References
+
+- [Docker Documentation](https://docs.docker.com)
+- [Docker CLI Reference](https://docs.docker.com/reference/cli/docker/)

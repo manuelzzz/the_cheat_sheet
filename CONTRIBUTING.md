@@ -108,6 +108,16 @@ coverage is expected and fine.
   tool, not a tutorial or blog post.
 - **Frontmatter `description`**: one sentence, used as the page's meta
   description and shown as a subtitle on listing pages.
+- **References**: end every cheat sheet with a `## References` section
+  linking to authoritative sources (official docs first):
+
+  ```markdown
+  ## References
+
+  - [Official Documentation](https://example.com)
+  ```
+
+  See `.rules/architecture.md` for the full convention.
 
 ## How do I test my changes locally?
 
