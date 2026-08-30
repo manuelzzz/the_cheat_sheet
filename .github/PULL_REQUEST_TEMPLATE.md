@@ -16,9 +16,8 @@ Closes #
 
 ## Checklist
 
-- [ ] I followed the project's contribution guidelines.
-- [ ] I tested my changes locally.
-- [ ] The project builds successfully.
+- [ ] I followed any documented repository guidelines (if applicable).
+- [ ] I verified the change behaves as intended (e.g., formatting/links render correctly).
 - [ ] I updated documentation when necessary.
 - [ ] This PR is focused on a single change.
 
