@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SuggestCheatSheetCta from '../components/SuggestCheatSheetCta.astro';
+import { defaultLocale } from '../config/locales';
+import { withBase } from '../config/site';
+---
+
+<Layout title="Page not found" locale={defaultLocale}>
+  <h1 class="text-2xl font-semibold">Page not found</h1>
+  <p class="mt-2 text-slate-600">
+    The page you're looking for doesn't exist, or the cheat sheet hasn't been
+    written yet.
+  </p>
+  <a
+    href={withBase(`/${defaultLocale}`)}
+    class="mt-4 inline-block text-sm text-slate-900 hover:underline"
+  >
+    &larr; Back to categories
+  </a>
+  <SuggestCheatSheetCta />
+</Layout>

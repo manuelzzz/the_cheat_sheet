@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import CardLink from '../../../components/CardLink.astro';
+import SuggestCheatSheetCta from '../../../components/SuggestCheatSheetCta.astro';
 import {
   capitalize,
   parseCategoryId,
@@ -64,4 +65,5 @@ const description = categoryEntries
       ))
     }
   </ul>
+  <SuggestCheatSheetCta />
 </Layout>
