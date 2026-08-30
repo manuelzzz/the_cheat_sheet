@@ -1,5 +1,7 @@
 # The Cheat Sheet
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+
 An open-source collection of practical cheat sheets for developers.
 
 Content is stored as Markdown files in this repository and automatically
@@ -48,7 +50,9 @@ frontmatter. See `.rules/architecture.md` for details.
 
 ## Contributing
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to add a cheat sheet.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to add a cheat sheet. By
+participating, you're expected to follow our
+[Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ## Tech Stack
 
@@ -82,3 +86,7 @@ deployed site is fully static.
 
 See [`.rules/`](./.rules) for the shared project conventions used by both
 human contributors and AI coding agents.
+
+## License
+
+Licensed under the [MIT License](./LICENSE).
