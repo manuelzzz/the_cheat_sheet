@@ -48,7 +48,9 @@ frontmatter. See `.rules/architecture.md` for details.
 
 ## Contributing
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to add a cheat sheet.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to add a cheat sheet. By
+participating, you're expected to follow our
+[Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ## Tech Stack
 

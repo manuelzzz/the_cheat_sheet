@@ -7,7 +7,8 @@ Markdown files, and the filesystem structure is the source of truth. There is
 no CMS, no editor, and no backend — you contribute by opening a Pull Request.
 
 See `.rules/` for the full set of project conventions (also used by AI coding
-agents working on this repo).
+agents working on this repo). By participating in this project, you agree to
+abide by our [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ## Adding a Cheat Sheet
 
