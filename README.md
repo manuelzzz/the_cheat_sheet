@@ -1,6 +1,10 @@
 # The Cheat Sheet
 
+[![CI](https://github.com/manuelzzz/the_cheat_sheet/actions/workflows/ci.yml/badge.svg)](https://github.com/manuelzzz/the_cheat_sheet/actions/workflows/ci.yml)
+[![Deploy](https://github.com/manuelzzz/the_cheat_sheet/actions/workflows/deploy.yml/badge.svg)](https://github.com/manuelzzz/the_cheat_sheet/actions/workflows/deploy.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+
+**[Live site →](https://manuelzzz.github.io/the_cheat_sheet/)**
 
 An open-source collection of practical cheat sheets for developers.
 
@@ -26,11 +30,18 @@ Markdown file through a Pull Request.
 ```text
 content/
 ├── en/
+│   ├── databases/
+│   │   ├── postgres.md
+│   │   └── sql.md
+│   ├── editors/
+│   │   └── vscode.md
 │   ├── frameworks/
-│   │   ├── flutter.md
-│   │   └── react.md
-│   └── languages/
-│       └── dart.md
+│   │   └── flutter.md
+│   ├── languages/
+│   │   └── dart.md
+│   └── tools/
+│       ├── docker.md
+│       └── git.md
 └── pt-br/
     └── frameworks/
         └── flutter.md
@@ -48,11 +59,18 @@ Which produces the routes:
 Locale, category, and slug are derived from the file path — never stored in
 frontmatter. See `.rules/architecture.md` for details.
 
+Each category folder can optionally have a `_category.md` file with a
+description shown on its listing page. See
+[CONTRIBUTING.md](./CONTRIBUTING.md) for details.
+
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to add a cheat sheet. By
 participating, you're expected to follow our
 [Code of Conduct](./CODE_OF_CONDUCT.md).
+
+Don't see a cheat sheet you're looking for? [Suggest one](https://github.com/manuelzzz/the_cheat_sheet/issues/new?template=suggest-cheat-sheet.yml)
+instead of writing it yourself.
 
 ## Tech Stack
 
@@ -70,17 +88,22 @@ Requires Node.js 22+.
 npm install
 npm run dev       # local dev server
 npm run build     # production build
+npm run preview   # preview the production build locally
 npm run format    # format with Prettier
 npm run lint      # lint with ESLint
 npm run typecheck # type-check with astro check
 ```
 
+Every push and Pull Request runs the same checks in CI
+(`.github/workflows/ci.yml`): format check, lint, typecheck, and build.
+
 ## Deployment
 
-The site is deployed to **GitHub Pages**. A GitHub Actions workflow
+The site is deployed to **GitHub Pages**, live at
+**https://manuelzzz.github.io/the_cheat_sheet/**. A GitHub Actions workflow
 (`.github/workflows/deploy.yml`) builds the site with `astro build` and
-publishes `dist/` on every push to `main`. There is no server runtime — the
-deployed site is fully static.
+publishes `dist/` on every push to `main` via `actions/deploy-pages`. There
+is no server runtime — the deployed site is fully static.
 
 ## Project Rules
 
