@@ -42,13 +42,15 @@ const editUrl = githubEditUrl(`content/${locale}/${category}/${slug}.md`);
       Edit this page
     </a>
   </div>
-  <h1 class="mt-2 text-3xl font-semibold">{entry.data.title}</h1>
-  {
-    entry.data.description && (
-      <p class="mt-2 text-slate-600">{entry.data.description}</p>
-    )
-  }
-  <article class="prose prose-slate mt-8 max-w-none">
-    <Content />
-  </article>
+  <div data-pagefind-body data-pagefind-filter={`category:${category}`}>
+    <h1 class="mt-2 text-3xl font-semibold">{entry.data.title}</h1>
+    {
+      entry.data.description && (
+        <p class="mt-2 text-slate-600">{entry.data.description}</p>
+      )
+    }
+    <article class="prose prose-slate mt-8 max-w-none">
+      <Content />
+    </article>
+  </div>
 </Layout>

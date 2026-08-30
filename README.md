@@ -79,6 +79,8 @@ instead of writing it yourself.
 - TypeScript
 - Markdown via Astro Content Collections
 - [Tailwind CSS](https://tailwindcss.com)
+- [Pagefind](https://pagefind.app) — static, build-time search index with a
+  client-side UI; no backend or database.
 
 ## Development
 
@@ -96,6 +98,11 @@ npm run typecheck # type-check with astro check
 
 Every push and Pull Request runs the same checks in CI
 (`.github/workflows/ci.yml`): format check, lint, typecheck, and build.
+
+Search (`/[locale]/search`) is powered by [Pagefind](https://pagefind.app),
+which indexes the built site as a `postbuild` step after `npm run build`. It
+only works against a production build — `npm run dev` won't have a search
+index, since nothing has been built yet.
 
 ## Deployment
 
