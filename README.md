@@ -1,5 +1,7 @@
 # The Cheat Sheet
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+
 An open-source collection of practical cheat sheets for developers.
 
 Content is stored as Markdown files in this repository and automatically
@@ -82,3 +84,7 @@ deployed site is fully static.
 
 See [`.rules/`](./.rules) for the shared project conventions used by both
 human contributors and AI coding agents.
+
+## License
+
+Licensed under the [MIT License](./LICENSE).
