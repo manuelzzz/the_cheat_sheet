@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import CardLink from '../../../components/CardLink.astro';
+import {
+  capitalize,
+  parseCategoryId,
+  parseCheatSheetId,
+} from '../../../config/content';
+import { withBase } from '../../../config/site';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('cheatsheets');
+  const paths = new Map<string, { locale: string; category: string }>();
+
+  for (const entry of entries) {
+    const { locale, category } = parseCheatSheetId(entry.id);
+    paths.set(`${locale}/${category}`, { locale, category });
+  }
+
+  return Array.from(paths.values()).map(({ locale, category }) => ({
+    params: { locale, category },
+  }));
+}
+
+const { locale, category } = Astro.params;
+
+const entries = await getCollection('cheatsheets');
+const cheatsheets = entries
+  .map((entry) => ({ ...parseCheatSheetId(entry.id), entry }))
+  .filter((item) => item.locale === locale && item.category === category)
+  .sort((a, b) => a.slug.localeCompare(b.slug));
+
+const categoryEntries = await getCollection('categories');
+const description = categoryEntries
+  .map((entry) => ({
+    ...parseCategoryId(entry.id),
+    description: entry.data.description,
+  }))
+  .find(
+    (item) => item.locale === locale && item.category === category,
+  )?.description;
+---
+
+<Layout title={capitalize(category)} description={description} locale={locale}>
+  <a
+    href={withBase(`/${locale}`)}
+    class="text-sm text-slate-600 hover:underline"
+  >
+    &larr; Categories
+  </a>
+  <h1 class="mt-2 text-2xl font-semibold">{capitalize(category)}</h1>
+  {description && <p class="mt-2 text-slate-600">{description}</p>}
+  <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+    {
+      cheatsheets.map(({ slug, entry }) => (
+        <li>
+          <CardLink
+            href={withBase(`/${locale}/${category}/${slug}`)}
+            title={entry.data.title}
+            description={entry.data.description}
+          />
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

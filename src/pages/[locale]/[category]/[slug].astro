@@ -1,0 +1,43 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import { capitalize, parseCheatSheetId } from '../../../config/content';
+import { withBase } from '../../../config/site';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('cheatsheets');
+
+  return entries.map((entry) => {
+    const { locale, category, slug } = parseCheatSheetId(entry.id);
+    return {
+      params: { locale, category, slug },
+      props: { entry, locale, category },
+    };
+  });
+}
+
+const { entry, locale, category } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout
+  title={entry.data.title}
+  description={entry.data.description}
+  locale={locale}
+>
+  <a
+    href={withBase(`/${locale}/${category}`)}
+    class="text-sm text-slate-600 hover:underline"
+  >
+    &larr; {capitalize(category)}
+  </a>
+  <h1 class="mt-2 text-3xl font-semibold">{entry.data.title}</h1>
+  {
+    entry.data.description && (
+      <p class="mt-2 text-slate-600">{entry.data.description}</p>
+    )
+  }
+  <article class="prose prose-slate mt-8 max-w-none">
+    <Content />
+  </article>
+</Layout>

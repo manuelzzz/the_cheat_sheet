@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import CardLink from '../../components/CardLink.astro';
+import {
+  capitalize,
+  parseCategoryId,
+  parseCheatSheetId,
+} from '../../config/content';
+import { withBase } from '../../config/site';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('cheatsheets');
+  const locales = new Set(
+    entries.map((entry) => parseCheatSheetId(entry.id).locale),
+  );
+
+  return Array.from(locales).map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params;
+
+const entries = await getCollection('cheatsheets');
+const categoryNames = Array.from(
+  new Set(
+    entries
+      .map((entry) => parseCheatSheetId(entry.id))
+      .filter((params) => params.locale === locale)
+      .map((params) => params.category),
+  ),
+).sort();
+
+const categoryEntries = await getCollection('categories');
+const descriptions = new Map(
+  categoryEntries
+    .map((entry) => ({
+      ...parseCategoryId(entry.id),
+      description: entry.data.description,
+    }))
+    .filter((item) => item.locale === locale)
+    .map((item) => [item.category, item.description]),
+);
+---
+
+<Layout title="Categories" locale={locale}>
+  <h1 class="text-2xl font-semibold">The Cheat Sheet</h1>
+  <p class="mt-2 text-slate-600">
+    A community-maintained collection of developer cheat sheets. Pick a category
+    to get started.
+  </p>
+  <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+    {
+      categoryNames.map((category) => (
+        <li>
+          <CardLink
+            href={withBase(`/${locale}/${category}`)}
+            title={capitalize(category)}
+            description={descriptions.get(category)}
+          />
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

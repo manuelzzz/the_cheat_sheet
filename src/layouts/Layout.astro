@@ -1,0 +1,32 @@
+---
+import '../styles/global.css';
+import { withBase } from '../config/site';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  locale: string;
+}
+
+const { title, description, locale } = Astro.props;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <title>{title} · The Cheat Sheet</title>
+    {description && <meta name="description" content={description} />}
+  </head>
+  <body class="flex min-h-screen flex-col bg-white text-slate-900">
+    <Header locale={locale} />
+    <main class="mx-auto w-full max-w-3xl flex-1 px-4 py-10">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

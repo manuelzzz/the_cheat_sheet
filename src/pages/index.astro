@@ -1,0 +1,6 @@
+---
+import { defaultLocale } from '../config/locales';
+import { withBase } from '../config/site';
+
+return Astro.redirect(withBase(`/${defaultLocale}`));
+---

@@ -1,0 +1,35 @@
+---
+import { locales } from '../config/locales';
+import { withBase } from '../config/site';
+
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+---
+
+<header class="border-b border-slate-200">
+  <div class="mx-auto flex max-w-3xl items-center justify-between px-4 py-4">
+    <a href={withBase(`/${locale}`)} class="font-semibold text-slate-900"
+      >The Cheat Sheet</a
+    >
+    <nav class="flex gap-3 text-sm" aria-label="Locale">
+      {
+        locales.map((l) => (
+          <a
+            href={withBase(`/${l}`)}
+            aria-current={l === locale ? 'page' : undefined}
+            class={
+              l === locale
+                ? 'font-semibold text-slate-900'
+                : 'text-slate-500 hover:text-slate-900 hover:underline'
+            }
+          >
+            {l}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
