@@ -25,6 +25,12 @@ const { locale } = Astro.props;
       The Cheat Sheet
     </a>
     <div class="flex items-center gap-3">
+      <a
+        href={withBase(`/${locale}/search`)}
+        class="text-sm text-slate-500 hover:text-slate-900 hover:underline dark:text-slate-400 dark:hover:text-slate-100"
+      >
+        Search
+      </a>
       <nav class="flex gap-3 text-sm" aria-label="Locale">
         {
           locales.map((l) => (
