@@ -5,6 +5,7 @@ import { capitalize, parseCheatSheetId } from '../../../config/content';
 import { githubEditUrl, withBase } from '../../../config/site';
 import CopyCodeButtons from '../../../components/CopyCodeButtons.astro';
 import TableOfContents from '../../../components/TableOfContents.astro';
+import RelatedCheatSheets from '../../../components/RelatedCheatSheets.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('cheatsheets');
@@ -21,6 +22,23 @@ export async function getStaticPaths() {
 const { entry, locale, category, slug } = Astro.props;
 const { Content, headings } = await render(entry);
 const editUrl = githubEditUrl(`content/${locale}/${category}/${slug}.md`);
+
+// "Related" cheat sheets are, for now, other cheat sheets in the same
+// locale and category — computed from the content collection, so a new
+// cheat sheet shows up automatically without any per-page wiring.
+const allEntries = await getCollection('cheatsheets');
+const relatedItems = allEntries
+  .map((e) => ({ ...parseCheatSheetId(e.id), entry: e }))
+  .filter(
+    (e) => e.locale === locale && e.category === category && e.slug !== slug,
+  )
+  .sort((a, b) => a.slug.localeCompare(b.slug))
+  .slice(0, 4)
+  .map((e) => ({
+    href: withBase(`/${e.locale}/${e.category}/${e.slug}`),
+    title: e.entry.data.title,
+    description: e.entry.data.description,
+  }));
 ---
 
 <Layout
@@ -59,4 +77,5 @@ const editUrl = githubEditUrl(`content/${locale}/${category}/${slug}.md`);
     </article>
   </div>
   <CopyCodeButtons />
+  <RelatedCheatSheets items={relatedItems} />
 </Layout>
