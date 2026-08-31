@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/manuelzzz/the_cheat_sheet/refs/heads/main/public/favicon.svg" alt="favicon" width="32" height="32"></img>
+<img src="https://raw.githubusercontent.com/manuelzzz/the_cheat_sheet/refs/heads/main/public/favicon.svg" alt="favicon" width="64" height="64"></img>
 
 [![CI](https://github.com/manuelzzz/the_cheat_sheet/actions/workflows/ci.yml/badge.svg)](https://github.com/manuelzzz/the_cheat_sheet/actions/workflows/ci.yml)
 [![Deploy](https://github.com/manuelzzz/the_cheat_sheet/actions/workflows/deploy.yml/badge.svg)](https://github.com/manuelzzz/the_cheat_sheet/actions/workflows/deploy.yml)
