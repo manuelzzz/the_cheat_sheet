@@ -1,0 +1,44 @@
+---
+// Shown only when a cheat sheet exists in more than one locale — lets
+// readers jump to the equivalent page in another available translation.
+interface LocaleLink {
+  locale: string;
+  href: string;
+  current: boolean;
+}
+
+interface Props {
+  locales: LocaleLink[];
+}
+
+const { locales } = Astro.props;
+---
+
+{
+  locales.length > 1 && (
+    <div class="mt-3 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+      <span>Available in:</span>
+      <ul class="flex gap-2">
+        {locales.map((l) => (
+          <li>
+            {l.current ? (
+              <span
+                aria-current="page"
+                class="font-semibold text-slate-900 dark:text-slate-100"
+              >
+                {l.locale}
+              </span>
+            ) : (
+              <a
+                href={l.href}
+                class="hover:text-slate-900 hover:underline dark:hover:text-slate-100"
+              >
+                {l.locale}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}

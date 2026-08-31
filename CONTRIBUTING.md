@@ -92,7 +92,9 @@ content/pt-br/frameworks/flutter.md
 ```
 
 A cheat sheet doesn't need to exist in every locale — partial translation
-coverage is expected and fine.
+coverage is expected and fine. Once a second locale exists for the same
+category/filename, the cheat sheet page automatically shows a language
+switcher linking to it — no registration needed.
 
 ## How should I structure a cheat sheet?
 

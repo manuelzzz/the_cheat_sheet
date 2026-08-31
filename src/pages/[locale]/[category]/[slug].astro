@@ -7,6 +7,7 @@ import CopyCodeButtons from '../../../components/CopyCodeButtons.astro';
 import TableOfContents from '../../../components/TableOfContents.astro';
 import RelatedCheatSheets from '../../../components/RelatedCheatSheets.astro';
 import TagList from '../../../components/TagList.astro';
+import AvailableLocales from '../../../components/AvailableLocales.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('cheatsheets');
@@ -40,6 +41,18 @@ const relatedItems = allEntries
     title: e.entry.data.title,
     description: e.entry.data.description,
   }));
+
+// Other locales that have this same category/slug — derived from the
+// content collection, so a new translation shows up automatically.
+const translations = allEntries
+  .map((e) => parseCheatSheetId(e.id))
+  .filter((e) => e.category === category && e.slug === slug)
+  .sort((a, b) => a.locale.localeCompare(b.locale))
+  .map((e) => ({
+    locale: e.locale,
+    href: withBase(`/${e.locale}/${category}/${slug}`),
+    current: e.locale === locale,
+  }));
 ---
 
 <Layout
@@ -72,6 +85,7 @@ const relatedItems = allEntries
         </p>
       )
     }
+    <AvailableLocales locales={translations} />
     <TagList tags={entry.data.tags} />
     <TableOfContents headings={headings} />
     <article class="prose prose-slate mt-8 max-w-none dark:prose-invert">
