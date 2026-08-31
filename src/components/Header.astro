@@ -14,8 +14,14 @@ const { locale } = Astro.props;
   <div class="mx-auto flex max-w-3xl items-center justify-between px-4 py-4">
     <a
       href={withBase(`/${locale}`)}
-      class="font-semibold text-slate-900 dark:text-slate-100"
+      class="flex items-center gap-2 font-semibold text-slate-900 dark:text-slate-100"
     >
+      <img src={withBase('/logo.svg')} alt="" class="h-7 w-7 dark:hidden" />
+      <img
+        src={withBase('/logo-inverse.svg')}
+        alt=""
+        class="hidden h-7 w-7 dark:block"
+      />
       The Cheat Sheet
     </a>
     <div class="flex items-center gap-3">

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title>The Cheat Sheet icon</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d0f16"/>
+      <stop offset="100%" stop-color="#080a0f"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect x="24" y="24" width="464" height="464" rx="82" fill="url(#bg)"/>
+
+  <!-- CS mark -->
+  <text
+    x="256"
+    y="303"
+    text-anchor="middle"
+    fill="#f8f8f6"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="190"
+    font-weight="700"
+    letter-spacing="-12">CS</text>
+
+  <!-- Markdown-inspired underscore -->
+  <rect x="270" y="340" width="108" height="22" rx="11" fill="#f8f8f6"/>
+</svg>

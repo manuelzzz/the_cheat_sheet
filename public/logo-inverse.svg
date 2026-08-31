@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="The Cheat Sheet inverse icon">
+  <rect width="512" height="512" rx="82" fill="#FFFFFF"/>
+  <text x="256" y="303" text-anchor="middle" fill="#05070A"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="190" font-weight="700" letter-spacing="-12">CS</text>
+  <rect x="270" y="340" width="108" height="22" rx="11" fill="#05070A"/>
+</svg>
