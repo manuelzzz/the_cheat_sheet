@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write .",
@@ -30,6 +31,7 @@
     "@tailwindcss/typography": "^0.5.20",
     "eslint": "^10.9.1",
     "eslint-plugin-astro": "^3.1.0",
+    "pagefind": "^1.5.2",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^6.0.3",

@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { parseCheatSheetId } from '../../config/content';
+import { withBase } from '../../config/site';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('cheatsheets');
+  const locales = new Set(
+    entries.map((entry) => parseCheatSheetId(entry.id).locale),
+  );
+
+  return Array.from(locales).map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params;
+---
+
+<Layout title="Search" locale={locale}>
+  <h1 class="text-2xl font-semibold">Search</h1>
+  <p class="mt-2 text-slate-600">
+    Search cheat sheets by title, description, category, or content.
+  </p>
+
+  <div id="search" class="mt-6"></div>
+
+  <link href={withBase('/pagefind/pagefind-ui.css')} rel="stylesheet" />
+  <script src={withBase('/pagefind/pagefind-ui.js')} is:inline></script>
+  <script is:inline define:vars={{ locale }}>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (!window.PagefindUI) {
+        // Only available after a production build (`npm run build` runs
+        // `pagefind` as a postbuild step) — not during `npm run dev`.
+        document.getElementById('search').textContent =
+          'Search is only available on the production build. Run `npm run build` to try it locally.';
+        return;
+      }
+
+      new window.PagefindUI({
+        element: '#search',
+        showSubResults: true,
+        language: locale,
+      });
+    });
+  </script>
+</Layout>
