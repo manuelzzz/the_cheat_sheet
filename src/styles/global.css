@@ -7,3 +7,19 @@
  * on `prefers-color-scheme`. This lets users override their OS setting.
  */
 @custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Pagefind's default search UI (src/pages/[locale]/search.astro) ships
+ * its own light-only theme via CSS custom properties, with no
+ * `prefers-color-scheme` handling — it has no idea about our manual
+ * `.dark` toggle. Override its variables to match our dark palette.
+ * `:root.dark` outranks pagefind-ui.css's own `:root` rule regardless of
+ * stylesheet load order, since it's strictly more specific.
+ */
+:root.dark {
+  --pagefind-ui-primary: #f1f5f9;
+  --pagefind-ui-text: #f1f5f9;
+  --pagefind-ui-background: #0f172a;
+  --pagefind-ui-border: #1e293b;
+  --pagefind-ui-tag: #1e293b;
+}
