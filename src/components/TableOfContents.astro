@@ -1,0 +1,37 @@
+---
+import type { MarkdownHeading } from '@astrojs/internal-helpers/markdown';
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+
+// Cheat sheets use "##" for their main sections and occasionally "###"
+// for subsections — skip anything shallower/deeper (e.g. a stray "#").
+const items = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
+const minDepth = Math.min(...items.map((h) => h.depth), 3);
+
+// Short cheat sheets don't need a table of contents.
+const MIN_HEADINGS = 3;
+---
+
+{
+  items.length >= MIN_HEADINGS && (
+    <nav aria-label="On this page" class="mt-8 text-sm">
+      <p class="font-medium text-slate-900 dark:text-slate-100">On this page</p>
+      <ul class="mt-2 space-y-1 border-l border-slate-200 dark:border-slate-800">
+        {items.map((heading) => (
+          <li style={{ paddingLeft: `${heading.depth - minDepth}rem` }}>
+            <a
+              href={`#${heading.slug}`}
+              class="block border-l -ml-px border-transparent py-0.5 pl-3 text-slate-600 hover:border-slate-400 hover:text-slate-900 dark:text-slate-400 dark:hover:border-slate-500 dark:hover:text-slate-100"
+            >
+              {heading.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}

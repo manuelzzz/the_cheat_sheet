@@ -4,6 +4,7 @@ import Layout from '../../../layouts/Layout.astro';
 import { capitalize, parseCheatSheetId } from '../../../config/content';
 import { githubEditUrl, withBase } from '../../../config/site';
 import CopyCodeButtons from '../../../components/CopyCodeButtons.astro';
+import TableOfContents from '../../../components/TableOfContents.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('cheatsheets');
@@ -18,7 +19,7 @@ export async function getStaticPaths() {
 }
 
 const { entry, locale, category, slug } = Astro.props;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
 const editUrl = githubEditUrl(`content/${locale}/${category}/${slug}.md`);
 ---
 
@@ -52,6 +53,7 @@ const editUrl = githubEditUrl(`content/${locale}/${category}/${slug}.md`);
         </p>
       )
     }
+    <TableOfContents headings={headings} />
     <article class="prose prose-slate mt-8 max-w-none dark:prose-invert">
       <Content />
     </article>
