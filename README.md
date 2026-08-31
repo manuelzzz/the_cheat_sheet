@@ -1,4 +1,4 @@
-# The Cheat Sheet
+<img src="https://raw.githubusercontent.com/manuelzzz/the_cheat_sheet/refs/heads/main/public/favicon.svg" alt="favicon" width="32" height="32"></img>
 
 [![CI](https://github.com/manuelzzz/the_cheat_sheet/actions/workflows/ci.yml/badge.svg)](https://github.com/manuelzzz/the_cheat_sheet/actions/workflows/ci.yml)
 [![Deploy](https://github.com/manuelzzz/the_cheat_sheet/actions/workflows/deploy.yml/badge.svg)](https://github.com/manuelzzz/the_cheat_sheet/actions/workflows/deploy.yml)
@@ -14,6 +14,21 @@ Markdown file through a Pull Request.
 
 > A folder defines structure. A Markdown file defines content. A Pull Request
 > is a contribution.
+
+## Quick Start
+
+Requires Node.js 22+.
+
+```bash
+git clone https://github.com/manuelzzz/the_cheat_sheet.git
+cd the_cheat_sheet
+npm install
+npm run dev
+```
+
+Open **http://localhost:4321/the_cheat_sheet/** to view it locally.
+
+Want to add or edit a cheat sheet? See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Core Principles
 
