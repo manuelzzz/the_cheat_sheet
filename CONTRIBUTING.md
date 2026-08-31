@@ -175,3 +175,11 @@ npm run build     # production build
     feature) rather than bundling unrelated edits.
   - New content follows the structure guidance above.
 - Fill in the PR template, linking the issue it closes (if any).
+
+## Where do I ask questions or share ideas?
+
+Use [GitHub Discussions](https://github.com/manuelzzz/the_cheat_sheet/discussions)
+for anything that isn't a bug report or a specific cheat sheet request —
+general questions, feature ideas, or showing off something you built with
+the project. Reserve Issues for actionable, scoped work (bugs, a specific
+cheat sheet suggestion via the issue template, a concrete feature request).

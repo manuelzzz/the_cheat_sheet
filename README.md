@@ -87,6 +87,10 @@ participating, you're expected to follow our
 Don't see a cheat sheet you're looking for? [Suggest one](https://github.com/manuelzzz/the_cheat_sheet/issues/new?template=suggest-cheat-sheet.yml)
 instead of writing it yourself.
 
+Have a question or an idea that isn't a bug report or a specific cheat
+sheet request? Use [Discussions](https://github.com/manuelzzz/the_cheat_sheet/discussions)
+instead of opening an issue.
+
 ## Tech Stack
 
 - [Astro](https://astro.build) — static site generation and filesystem-based
