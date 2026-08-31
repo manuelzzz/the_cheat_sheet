@@ -1,0 +1,40 @@
+// Project tasks for Zed. Mirror the npm scripts in package.json so the
+// same validation steps documented in CONTRIBUTING.md are runnable from
+// Zed's task runner (Cmd-Shift-P / Ctrl-Shift-P -> "task: spawn").
+[
+  {
+    "label": "Dev server",
+    "command": "npm",
+    "args": ["run", "dev"]
+  },
+  {
+    "label": "Build",
+    "command": "npm",
+    "args": ["run", "build"]
+  },
+  {
+    "label": "Preview build",
+    "command": "npm",
+    "args": ["run", "preview"]
+  },
+  {
+    "label": "Format",
+    "command": "npm",
+    "args": ["run", "format"]
+  },
+  {
+    "label": "Lint",
+    "command": "npm",
+    "args": ["run", "lint"]
+  },
+  {
+    "label": "Typecheck",
+    "command": "npm",
+    "args": ["run", "typecheck"]
+  },
+  {
+    "label": "Validate content",
+    "command": "npm",
+    "args": ["run", "validate:content"]
+  }
+]
