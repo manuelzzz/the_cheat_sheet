@@ -1,6 +1,10 @@
 ---
 title: Flutter
 description: Referência rápida de widgets, layout e estado no Flutter.
+tags:
+  - mobile
+  - dart
+  - cross-platform
 ---
 
 ## Widgets

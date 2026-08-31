@@ -93,3 +93,23 @@ section exists, links resolve) would target.
 The heading itself stays in English (`## References`) across all locales so
 tooling can match it literally; only the linked source titles are
 translated.
+
+## Tags
+
+Frontmatter may optionally include `tags`, a flat list of topics a cheat
+sheet relates to beyond its category:
+
+```markdown
+---
+title: Flutter
+description: Build applications for multiple platforms.
+tags:
+  - mobile
+  - dart
+  - cross-platform
+---
+```
+
+Tags are freeform (no fixed vocabulary) and not currently used for
+filtering — they lay the groundwork for future tag-based discovery. A
+cheat sheet without `tags` is just as valid as one with them.

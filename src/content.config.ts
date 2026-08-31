@@ -14,6 +14,10 @@ const cheatsheets = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
+    // Freeform topics a cheat sheet relates to, beyond its category (e.g.
+    // "mobile", "cross-platform"). Optional, and not yet used for
+    // filtering — see .rules/architecture.md.
+    tags: z.array(z.string()).optional(),
   }),
 });
 

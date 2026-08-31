@@ -53,7 +53,12 @@ function walk(dir: string): string[] {
   return files;
 }
 
-/** Parses a flat `key: value` frontmatter block (no nested YAML). */
+/**
+ * Parses a flat `key: value` frontmatter block (no nested YAML). List
+ * fields such as `tags` are ignored here (their `- item` lines don't
+ * match `key: value` and are silently skipped) since nothing below
+ * currently validates them.
+ */
 function parseFrontmatter(raw: string): Record<string, string> | null {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!match) return null;

@@ -1,6 +1,10 @@
 ---
 title: Flutter
 description: Quick reference for Flutter widgets, layout, and state basics.
+tags:
+  - mobile
+  - dart
+  - cross-platform
 ---
 
 ## Widgets

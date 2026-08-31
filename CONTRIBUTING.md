@@ -119,6 +119,22 @@ coverage is expected and fine.
 
   See `.rules/architecture.md` for the full convention.
 
+- **Frontmatter `tags`** (optional): a flat list of topics beyond the
+  cheat sheet's category, e.g.:
+
+  ```markdown
+  ---
+  title: Flutter
+  description: Build applications for multiple platforms.
+  tags:
+    - mobile
+    - dart
+    - cross-platform
+  ---
+  ```
+
+  Freeform, no fixed vocabulary — see `.rules/architecture.md`.
+
 ## How do I test my changes locally?
 
 Requires Node.js 22+.

@@ -6,6 +6,7 @@ import { githubEditUrl, withBase } from '../../../config/site';
 import CopyCodeButtons from '../../../components/CopyCodeButtons.astro';
 import TableOfContents from '../../../components/TableOfContents.astro';
 import RelatedCheatSheets from '../../../components/RelatedCheatSheets.astro';
+import TagList from '../../../components/TagList.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('cheatsheets');
@@ -71,6 +72,7 @@ const relatedItems = allEntries
         </p>
       )
     }
+    <TagList tags={entry.data.tags} />
     <TableOfContents headings={headings} />
     <article class="prose prose-slate mt-8 max-w-none dark:prose-invert">
       <Content />
