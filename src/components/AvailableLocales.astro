@@ -16,7 +16,11 @@ const { locales } = Astro.props;
 
 {
   locales.length > 1 && (
-    <div role="navigation" aria-label="Available translations" class="mt-3 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+    <div
+      role="navigation"
+      aria-label="Available translations"
+      class="mt-3 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400"
+    >
       <span>Available in:</span>
       <ul class="flex gap-2">
         {locales.map((l) => (
