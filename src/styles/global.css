@@ -1,2 +1,9 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+
+/*
+ * Dark mode is toggled by adding/removing a `.dark` class on <html>
+ * (see the inline script in Layout.astro), rather than relying solely
+ * on `prefers-color-scheme`. This lets users override their OS setting.
+ */
+@custom-variant dark (&:where(.dark, .dark *));

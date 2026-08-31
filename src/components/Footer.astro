@@ -4,11 +4,16 @@ import { repoUrl } from '../config/site';
 const year = new Date().getFullYear();
 ---
 
-<footer class="mt-16 border-t border-slate-200">
+<footer class="mt-16 border-t border-slate-200 dark:border-slate-800">
   <div
-    class="mx-auto flex max-w-3xl flex-col gap-2 px-4 py-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between"
+    class="mx-auto flex max-w-3xl flex-col gap-2 px-4 py-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between dark:text-slate-400"
   >
     <p>&copy; {year} The Cheat Sheet. Open source, community-maintained.</p>
-    <a href={repoUrl} class="hover:text-slate-900 hover:underline"> GitHub </a>
+    <a
+      href={repoUrl}
+      class="hover:text-slate-900 hover:underline dark:hover:text-slate-100"
+    >
+      GitHub
+    </a>
   </div>
 </footer>

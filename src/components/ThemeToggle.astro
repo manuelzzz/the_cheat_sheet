@@ -1,0 +1,59 @@
+---
+// Toggles the `.dark` class on <html> and persists the choice in
+// localStorage. The initial theme (before this component hydrates) is
+// set by the blocking inline script in `Layout.astro` to avoid a flash
+// of the wrong theme.
+---
+
+<button
+  type="button"
+  id="theme-toggle"
+  aria-label="Toggle dark mode"
+  aria-pressed="false"
+  class="rounded-md p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
+>
+  <!-- Moon: shown in light mode, click to switch to dark -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    class="h-5 w-5 dark:hidden"
+    aria-hidden="true"
+  >
+    <path
+      d="M21.64 13a9 9 0 1 1-10.63-10.63 1 1 0 0 1 1.11 1.4A7 7 0 0 0 20.24 11.9a1 1 0 0 1 1.4 1.1Z"
+    ></path>
+  </svg>
+  <!-- Sun: shown in dark mode, click to switch to light -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    class="hidden h-5 w-5 dark:block"
+    aria-hidden="true"
+  >
+    <path
+      d="M12 4a1 1 0 0 1-1-1V1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1Zm0 20a1 1 0 0 1-1-1v-2a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1ZM4 13H2a1 1 0 1 1 0-2h2a1 1 0 1 1 0 2Zm20 0h-2a1 1 0 1 1 0-2h2a1 1 0 1 1 0 2ZM5.64 6.05a1 1 0 0 1-.7-.29L3.5 4.32a1 1 0 1 1 1.42-1.42l1.42 1.42a1 1 0 0 1-.7 1.71Zm14.14 14.14a1 1 0 0 1-.7-.29l-1.42-1.42a1 1 0 1 1 1.42-1.42l1.42 1.42a1 1 0 0 1-.7 1.71ZM4.22 20.9a1 1 0 0 1-.7-1.71l1.42-1.42a1 1 0 1 1 1.42 1.42l-1.42 1.42a1 1 0 0 1-.7.29Zm14.14-14.14a1 1 0 0 1-.7-1.71l1.42-1.42a1 1 0 1 1 1.42 1.42l-1.42 1.42a1 1 0 0 1-.7.29ZM12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12Z"
+    ></path>
+  </svg>
+</button>
+
+<script>
+  const STORAGE_KEY = 'theme';
+  const button = document.getElementById('theme-toggle');
+
+  const syncAriaPressed = () => {
+    button?.setAttribute(
+      'aria-pressed',
+      document.documentElement.classList.contains('dark') ? 'true' : 'false',
+    );
+  };
+
+  syncAriaPressed();
+
+  button?.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem(STORAGE_KEY, isDark ? 'dark' : 'light');
+    syncAriaPressed();
+  });
+</script>

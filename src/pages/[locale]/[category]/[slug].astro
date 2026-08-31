@@ -29,7 +29,7 @@ const editUrl = githubEditUrl(`content/${locale}/${category}/${slug}.md`);
   <div class="flex items-center justify-between gap-4">
     <a
       href={withBase(`/${locale}/${category}`)}
-      class="text-sm text-slate-600 hover:underline"
+      class="text-sm text-slate-600 hover:underline dark:text-slate-400"
     >
       &larr; {capitalize(category)}
     </a>
@@ -37,7 +37,7 @@ const editUrl = githubEditUrl(`content/${locale}/${category}/${slug}.md`);
       href={editUrl}
       target="_blank"
       rel="noopener noreferrer"
-      class="text-sm text-slate-500 hover:text-slate-900 hover:underline"
+      class="text-sm text-slate-500 hover:text-slate-900 hover:underline dark:text-slate-400 dark:hover:text-slate-100"
     >
       Edit this page
     </a>
@@ -45,10 +45,12 @@ const editUrl = githubEditUrl(`content/${locale}/${category}/${slug}.md`);
   <h1 class="mt-2 text-3xl font-semibold">{entry.data.title}</h1>
   {
     entry.data.description && (
-      <p class="mt-2 text-slate-600">{entry.data.description}</p>
+      <p class="mt-2 text-slate-600 dark:text-slate-400">
+        {entry.data.description}
+      </p>
     )
   }
-  <article class="prose prose-slate mt-8 max-w-none">
+  <article class="prose prose-slate mt-8 max-w-none dark:prose-invert">
     <Content />
   </article>
 </Layout>

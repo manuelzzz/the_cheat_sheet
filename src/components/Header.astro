@@ -1,6 +1,7 @@
 ---
 import { locales } from '../config/locales';
 import { withBase } from '../config/site';
+import ThemeToggle from './ThemeToggle.astro';
 
 interface Props {
   locale: string;
@@ -9,27 +10,33 @@ interface Props {
 const { locale } = Astro.props;
 ---
 
-<header class="border-b border-slate-200">
+<header class="border-b border-slate-200 dark:border-slate-800">
   <div class="mx-auto flex max-w-3xl items-center justify-between px-4 py-4">
-    <a href={withBase(`/${locale}`)} class="font-semibold text-slate-900"
-      >The Cheat Sheet</a
+    <a
+      href={withBase(`/${locale}`)}
+      class="font-semibold text-slate-900 dark:text-slate-100"
     >
-    <nav class="flex gap-3 text-sm" aria-label="Locale">
-      {
-        locales.map((l) => (
-          <a
-            href={withBase(`/${l}`)}
-            aria-current={l === locale ? 'page' : undefined}
-            class={
-              l === locale
-                ? 'font-semibold text-slate-900'
-                : 'text-slate-500 hover:text-slate-900 hover:underline'
-            }
-          >
-            {l}
-          </a>
-        ))
-      }
-    </nav>
+      The Cheat Sheet
+    </a>
+    <div class="flex items-center gap-3">
+      <nav class="flex gap-3 text-sm" aria-label="Locale">
+        {
+          locales.map((l) => (
+            <a
+              href={withBase(`/${l}`)}
+              aria-current={l === locale ? 'page' : undefined}
+              class={
+                l === locale
+                  ? 'font-semibold text-slate-900 dark:text-slate-100'
+                  : 'text-slate-500 hover:text-slate-900 hover:underline dark:text-slate-400 dark:hover:text-slate-100'
+              }
+            >
+              {l}
+            </a>
+          ))
+        }
+      </nav>
+      <ThemeToggle />
+    </div>
   </div>
 </header>

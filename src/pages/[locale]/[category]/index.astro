@@ -46,12 +46,16 @@ const description = categoryEntries
 <Layout title={capitalize(category)} description={description} locale={locale}>
   <a
     href={withBase(`/${locale}`)}
-    class="text-sm text-slate-600 hover:underline"
+    class="text-sm text-slate-600 hover:underline dark:text-slate-400"
   >
     &larr; Categories
   </a>
   <h1 class="mt-2 text-2xl font-semibold">{capitalize(category)}</h1>
-  {description && <p class="mt-2 text-slate-600">{description}</p>}
+  {
+    description && (
+      <p class="mt-2 text-slate-600 dark:text-slate-400">{description}</p>
+    )
+  }
   <ul class="mt-6 grid gap-3 sm:grid-cols-2">
     {
       cheatsheets.map(({ slug, entry }) => (
