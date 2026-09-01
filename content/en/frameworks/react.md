@@ -236,10 +236,8 @@ function ThemedButton() {
 import { useRef, useMemo, useCallback } from 'react';
 
 function HookExamples({ items, onSelect }) {
-  // useRef: persist mutable value without triggering re-renders or access DOM
+  // useRef: access DOM elements directly or persist mutable values across renders
   const inputRef = useRef(null);
-  const renderCount = useRef(0);
-  renderCount.current += 1;
 
   const focusInput = () => inputRef.current?.focus();
 
@@ -260,13 +258,14 @@ function HookExamples({ items, onSelect }) {
     <div>
       <input ref={inputRef} />
       <button onClick={focusInput}>Focus Input</button>
+      <button onClick={() => handleClick(42)}>Select</button>
       <p>Total Score: {totalScore}</p>
     </div>
   );
 }
 ```
 
-- `useRef` — stores DOM node references or mutable values that survive re-renders without causing a new render.
+- `useRef` — stores DOM node references or mutable values that survive re-renders without triggering a new render.
 - `useMemo` — memoizes computed values until dependencies change.
 - `useCallback` — memoizes function instances passed to optimized child components.
 
@@ -275,12 +274,13 @@ function HookExamples({ items, onSelect }) {
 ```jsx
 import { useState, useEffect } from 'react';
 
-// Custom hook to track window size
+// Custom hook to track window size (with SSR guard)
 function useWindowSize() {
-  const [size, setSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+  const [size, setSize] = useState(() =>
+    typeof window !== 'undefined'
+      ? { width: window.innerWidth, height: window.innerHeight }
+      : { width: 0, height: 0 }
+  );
 
   useEffect(() => {
     const handleResize = () => {
