@@ -4,7 +4,7 @@ import Layout from '../../../layouts/Layout.astro';
 import CardLink from '../../../components/CardLink.astro';
 import SuggestCheatSheetCta from '../../../components/SuggestCheatSheetCta.astro';
 import {
-  capitalize,
+  titleCase,
   parseCategoryId,
   parseCheatSheetId,
 } from '../../../config/content';
@@ -43,14 +43,14 @@ const description = categoryEntries
   )?.description;
 ---
 
-<Layout title={capitalize(category)} description={description} locale={locale}>
+<Layout title={titleCase(category)} description={description} locale={locale}>
   <a
     href={withBase(`/${locale}`)}
     class="text-sm text-slate-600 hover:underline dark:text-slate-400"
   >
     &larr; Categories
   </a>
-  <h1 class="mt-2 text-2xl font-semibold">{capitalize(category)}</h1>
+  <h1 class="mt-2 text-2xl font-semibold">{titleCase(category)}</h1>
   {
     description && (
       <p class="mt-2 text-slate-600 dark:text-slate-400">{description}</p>

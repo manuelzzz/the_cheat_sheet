@@ -59,7 +59,7 @@ export function parseCategoryId(id: string): CategoryParams {
 }
 
 /** Title-cases a filesystem-derived name for display (e.g. "operating-systems" -> "Operating Systems"). */
-export function capitalize(value: string): string {
+export function titleCase(value: string): string {
   return value
     .split('-')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))

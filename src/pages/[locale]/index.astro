@@ -4,7 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 import CardLink from '../../components/CardLink.astro';
 import SuggestCheatSheetCta from '../../components/SuggestCheatSheetCta.astro';
 import {
-  capitalize,
+  titleCase,
   parseCategoryId,
   parseCheatSheetId,
 } from '../../config/content';
@@ -55,7 +55,7 @@ const descriptions = new Map(
         <li>
           <CardLink
             href={withBase(`/${locale}/${category}`)}
-            title={capitalize(category)}
+            title={titleCase(category)}
             description={descriptions.get(category)}
           />
         </li>

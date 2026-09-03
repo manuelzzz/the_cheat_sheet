@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
-import { capitalize, parseCheatSheetId } from '../../../config/content';
+import { titleCase, parseCheatSheetId } from '../../../config/content';
 import { githubEditUrl, withBase } from '../../../config/site';
 import CopyCodeButtons from '../../../components/CopyCodeButtons.astro';
 import BackToTop from '../../../components/BackToTop.astro';
@@ -66,7 +66,7 @@ const translations = allEntries
       href={withBase(`/${locale}/${category}`)}
       class="text-sm text-slate-600 hover:underline dark:text-slate-400"
     >
-      &larr; {capitalize(category)}
+      &larr; {titleCase(category)}
     </a>
     <a
       href={editUrl}
