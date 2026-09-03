@@ -1,0 +1,46 @@
+---
+// A fixed "back to top" button, shown once the reader has scrolled past a
+// threshold. Lives on the cheat sheet page, since that's where content is
+// long enough to warrant it — not needed on short listing pages.
+---
+
+<button
+  type="button"
+  id="back-to-top"
+  aria-label="Back to top"
+  class="fixed bottom-6 right-6 hidden rounded-full border border-slate-200 bg-white p-3 text-slate-600 shadow-lg transition hover:text-slate-900 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400 dark:hover:text-slate-100"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    class="h-5 w-5"
+    aria-hidden="true"
+  >
+    <path
+      d="M14.77 12.79a.75.75 0 0 1-1.06-.02L10 8.832 6.29 12.77a.75.75 0 1 1-1.08-1.04l4.25-4.5a.75.75 0 0 1 1.08 0l4.25 4.5a.75.75 0 0 1-.02 1.06Z"
+    ></path>
+  </svg>
+</button>
+
+<script>
+  const SCROLL_THRESHOLD = 400;
+  const button = document.getElementById('back-to-top');
+
+  const syncVisibility = () => {
+    button?.classList.toggle('hidden', window.scrollY < SCROLL_THRESHOLD);
+  };
+
+  syncVisibility();
+  window.addEventListener('scroll', syncVisibility, { passive: true });
+
+  button?.addEventListener('click', () => {
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+    });
+  });
+</script>

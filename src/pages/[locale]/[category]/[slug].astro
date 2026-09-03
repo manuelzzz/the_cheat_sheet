@@ -4,6 +4,7 @@ import Layout from '../../../layouts/Layout.astro';
 import { capitalize, parseCheatSheetId } from '../../../config/content';
 import { githubEditUrl, withBase } from '../../../config/site';
 import CopyCodeButtons from '../../../components/CopyCodeButtons.astro';
+import BackToTop from '../../../components/BackToTop.astro';
 import TableOfContents from '../../../components/TableOfContents.astro';
 import RelatedCheatSheets from '../../../components/RelatedCheatSheets.astro';
 import TagList from '../../../components/TagList.astro';
@@ -94,4 +95,5 @@ const translations = allEntries
   </div>
   <CopyCodeButtons />
   <RelatedCheatSheets items={relatedItems} />
+  <BackToTop />
 </Layout>
