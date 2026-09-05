@@ -18,6 +18,9 @@ const cheatsheets = defineCollection({
     // "mobile", "cross-platform"). Optional, and not yet used for
     // filtering — see .rules/architecture.md.
     tags: z.array(z.string()).optional(),
+    // Opt-in flag surfaced in a "Featured" section on the locale home
+    // page. Optional, defaults to not featured — see .rules/architecture.md.
+    featured: z.boolean().optional(),
   }),
 });
 

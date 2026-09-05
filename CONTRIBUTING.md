@@ -137,6 +137,10 @@ switcher linking to it — no registration needed.
 
   Freeform, no fixed vocabulary — see `.rules/architecture.md`.
 
+- **Frontmatter `featured`** (optional): set `featured: true` to surface
+  a cheat sheet in the "Featured" section on its locale's home page.
+  Keep the featured set small — see `.rules/architecture.md`.
+
 ## How do I test my changes locally?
 
 Requires Node.js 22+.

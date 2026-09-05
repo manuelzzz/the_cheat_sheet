@@ -1,6 +1,7 @@
 ---
 title: Git
 description: Common Git commands for everyday version control.
+featured: true
 ---
 
 ## Basics

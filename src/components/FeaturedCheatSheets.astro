@@ -1,0 +1,38 @@
+---
+// Shown only when at least one cheat sheet in the current locale has
+// `featured: true` in its frontmatter — see .rules/architecture.md.
+import CardLink from './CardLink.astro';
+
+interface FeaturedItem {
+  href: string;
+  title: string;
+  description?: string;
+}
+
+interface Props {
+  items: FeaturedItem[];
+}
+
+const { items } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <section class="mb-10">
+      <h2 class="text-sm font-medium text-slate-900 dark:text-slate-100">
+        Featured
+      </h2>
+      <ul class="mt-3 grid gap-3 sm:grid-cols-2">
+        {items.map((item) => (
+          <li>
+            <CardLink
+              href={item.href}
+              title={item.title}
+              description={item.description}
+            />
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
