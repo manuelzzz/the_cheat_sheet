@@ -1,6 +1,7 @@
 ---
 title: SQL
 description: Core SQL syntax for querying and modifying relational data.
+featured: true
 ---
 
 ## Querying

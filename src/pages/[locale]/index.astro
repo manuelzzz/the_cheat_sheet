@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import CardLink from '../../components/CardLink.astro';
 import SuggestCheatSheetCta from '../../components/SuggestCheatSheetCta.astro';
+import FeaturedCheatSheets from '../../components/FeaturedCheatSheets.astro';
 import {
   titleCase,
   parseCategoryId,
@@ -31,6 +32,22 @@ const categoryNames = Array.from(
   ),
 ).sort();
 
+const MAX_FEATURED = 4;
+
+const featuredItems = entries
+  .map((entry) => ({ ...parseCheatSheetId(entry.id), entry }))
+  .filter((item) => item.locale === locale && item.entry.data.featured)
+  .sort(
+    (a, b) =>
+      a.category.localeCompare(b.category) || a.slug.localeCompare(b.slug),
+  )
+  .slice(0, MAX_FEATURED)
+  .map((item) => ({
+    href: withBase(`/${item.locale}/${item.category}/${item.slug}`),
+    title: item.entry.data.title,
+    description: item.entry.data.description,
+  }));
+
 const categoryEntries = await getCollection('categories');
 const descriptions = new Map(
   categoryEntries
@@ -49,18 +66,26 @@ const descriptions = new Map(
     A community-maintained collection of developer cheat sheets. Pick a category
     to get started.
   </p>
-  <ul class="mt-6 grid gap-3 sm:grid-cols-2">
-    {
-      categoryNames.map((category) => (
-        <li>
-          <CardLink
-            href={withBase(`/${locale}/${category}`)}
-            title={titleCase(category)}
-            description={descriptions.get(category)}
-          />
-        </li>
-      ))
-    }
-  </ul>
+
+  <div class="mt-8">
+    <FeaturedCheatSheets items={featuredItems} />
+
+    <h2 class="text-sm font-medium text-slate-900 dark:text-slate-100">
+      Categories
+    </h2>
+    <ul class="mt-3 grid gap-3 sm:grid-cols-2">
+      {
+        categoryNames.map((category) => (
+          <li>
+            <CardLink
+              href={withBase(`/${locale}/${category}`)}
+              title={titleCase(category)}
+              description={descriptions.get(category)}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
   <SuggestCheatSheetCta />
 </Layout>

@@ -113,3 +113,19 @@ tags:
 Tags are freeform (no fixed vocabulary) and not currently used for
 filtering — they lay the groundwork for future tag-based discovery. A
 cheat sheet without `tags` is just as valid as one with them.
+
+## Featured
+
+Frontmatter may optionally include `featured: true` to surface a cheat
+sheet in the "Featured" section on its locale's home page:
+
+```markdown
+---
+title: Git
+description: Common Git commands for everyday version control.
+featured: true
+---
+```
+
+Keep the featured set small (a handful per locale) — it's meant to help
+new visitors find a good starting point, not become a second full index.

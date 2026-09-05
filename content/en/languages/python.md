@@ -1,6 +1,7 @@
 ---
 title: Python
 description: Practical Python syntax for data types, functions, classes, and everyday tooling.
+featured: true
 ---
 
 ## Variables and Data Types
