@@ -29,7 +29,7 @@ const discussionsUrl = `${repoUrl}/discussions`;
   <p class="mt-2 text-slate-600 dark:text-slate-400">
     The Cheat Sheet is a community-maintained collection of Markdown files —
     contributing means opening a Pull Request, nothing more. This page is a
-    quick summary; see
+    quick summary; see{' '}
     <a
       href={contributingUrl}
       target="_blank"
@@ -37,7 +37,7 @@ const discussionsUrl = `${repoUrl}/discussions`;
       class="underline"
     >
       CONTRIBUTING.md
-    </a>
+    </a>{' '}
     for the full guide.
   </p>
 
@@ -47,16 +47,18 @@ const discussionsUrl = `${repoUrl}/discussions`;
         Add a cheat sheet
       </h2>
       <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
-        Create a Markdown file at
+        Create a Markdown file at{' '}
         <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800">
           content/[locale]/[category]/[cheat-sheet].md
-        </code>
-        with a <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800"
-          >title</code
-        >
-        and <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800"
-          >description</code
-        >
+        </code>{' '}
+        with a{' '}
+        <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800">
+          title
+        </code>{' '}
+        and{' '}
+        <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800">
+          description
+        </code>{' '}
         in frontmatter, then write the content in Markdown below it. The route is
         generated automatically — no registration needed.
       </p>
@@ -79,10 +81,10 @@ const discussionsUrl = `${repoUrl}/discussions`;
       </h2>
       <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
         Just create the folder and add a cheat sheet inside it — the category
-        page is generated automatically. Optionally add a
+        page is generated automatically. Optionally add a{' '}
         <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800">
           _category.md
-        </code>
+        </code>{' '}
         file with a description shown on its listing page.
       </p>
     </section>
@@ -98,18 +100,23 @@ const discussionsUrl = `${repoUrl}/discussions`;
         class="mt-2 overflow-x-auto rounded-lg bg-slate-900 p-4 text-sm text-slate-100"><code>npm install
 npm run dev</code></pre>
       <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
-        Before opening a Pull Request, run
-        <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800"
-          >format</code
-        >,
-        <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800"
-          >lint</code
-        >,
-        <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800"
-          >typecheck</code
-        >, and <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800"
-          >build</code
-        > — see
+        Before opening a Pull Request, run{' '}
+        <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800">
+          format
+        </code>
+        ,{' '}
+        <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800">
+          lint
+        </code>
+        ,{' '}
+        <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800">
+          typecheck
+        </code>
+        , and{' '}
+        <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800">
+          build
+        </code>{' '}
+        — see{' '}
         <a
           href={contributingUrl}
           target="_blank"
@@ -117,13 +124,14 @@ npm run dev</code></pre>
           class="underline"
         >
           CONTRIBUTING.md
-        </a> for the exact commands.
+        </a>{' '}
+        for the exact commands.
       </p>
     </section>
   </div>
 
   <p class="mt-8 text-sm text-slate-600 dark:text-slate-400">
-    By participating, you're expected to follow our
+    By participating, you're expected to follow our{' '}
     <a
       href={codeOfConductUrl}
       target="_blank"
@@ -131,7 +139,7 @@ npm run dev</code></pre>
       class="underline"
     >
       Code of Conduct
-    </a>. Have a question instead of something ready to build? Use
+    </a>. Have a question instead of something ready to build? Use{' '}
     <a
       href={discussionsUrl}
       target="_blank"
