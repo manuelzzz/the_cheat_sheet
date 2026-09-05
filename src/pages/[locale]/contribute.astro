@@ -1,0 +1,146 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import SuggestCheatSheetCta from '../../components/SuggestCheatSheetCta.astro';
+import { parseCheatSheetId } from '../../config/content';
+import { repoUrl } from '../../config/site';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('cheatsheets');
+  const locales = new Set(
+    entries.map((entry) => parseCheatSheetId(entry.id).locale),
+  );
+
+  return Array.from(locales).map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params;
+const contributingUrl = `${repoUrl}/blob/main/CONTRIBUTING.md`;
+const codeOfConductUrl = `${repoUrl}/blob/main/CODE_OF_CONDUCT.md`;
+const discussionsUrl = `${repoUrl}/discussions`;
+---
+
+<Layout
+  title="Contribute"
+  description="How to contribute a cheat sheet, translation, or category to The Cheat Sheet."
+  locale={locale}
+>
+  <h1 class="text-2xl font-semibold">Contribute</h1>
+  <p class="mt-2 text-slate-600 dark:text-slate-400">
+    The Cheat Sheet is a community-maintained collection of Markdown files —
+    contributing means opening a Pull Request, nothing more. This page is a
+    quick summary; see
+    <a
+      href={contributingUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="underline"
+    >
+      CONTRIBUTING.md
+    </a>
+    for the full guide.
+  </p>
+
+  <div class="mt-8 space-y-8">
+    <section>
+      <h2 class="text-sm font-medium text-slate-900 dark:text-slate-100">
+        Add a cheat sheet
+      </h2>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        Create a Markdown file at
+        <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800">
+          content/[locale]/[category]/[cheat-sheet].md
+        </code>
+        with a <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800"
+          >title</code
+        >
+        and <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800"
+          >description</code
+        >
+        in frontmatter, then write the content in Markdown below it. The route is
+        generated automatically — no registration needed.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-sm font-medium text-slate-900 dark:text-slate-100">
+        Add a translation
+      </h2>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        Copy an existing cheat sheet into another locale folder, keeping the
+        same category and filename, and translate its contents. A cheat sheet
+        doesn't need to exist in every locale — partial coverage is fine.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-sm font-medium text-slate-900 dark:text-slate-100">
+        Add a category
+      </h2>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        Just create the folder and add a cheat sheet inside it — the category
+        page is generated automatically. Optionally add a
+        <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800">
+          _category.md
+        </code>
+        file with a description shown on its listing page.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-sm font-medium text-slate-900 dark:text-slate-100">
+        Test your changes locally
+      </h2>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        Requires Node.js 22+.
+      </p>
+      <pre
+        class="mt-2 overflow-x-auto rounded-lg bg-slate-900 p-4 text-sm text-slate-100"><code>npm install
+npm run dev</code></pre>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        Before opening a Pull Request, run
+        <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800"
+          >format</code
+        >,
+        <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800"
+          >lint</code
+        >,
+        <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800"
+          >typecheck</code
+        >, and <code class="rounded bg-slate-100 px-1 py-0.5 dark:bg-slate-800"
+          >build</code
+        > — see
+        <a
+          href={contributingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline"
+        >
+          CONTRIBUTING.md
+        </a> for the exact commands.
+      </p>
+    </section>
+  </div>
+
+  <p class="mt-8 text-sm text-slate-600 dark:text-slate-400">
+    By participating, you're expected to follow our
+    <a
+      href={codeOfConductUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="underline"
+    >
+      Code of Conduct
+    </a>. Have a question instead of something ready to build? Use
+    <a
+      href={discussionsUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="underline"
+    >
+      Discussions
+    </a>.
+  </p>
+
+  <SuggestCheatSheetCta />
+</Layout>

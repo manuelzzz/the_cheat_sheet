@@ -26,6 +26,12 @@ const { locale } = Astro.props;
     </a>
     <div class="flex items-center gap-3">
       <a
+        href={withBase(`/${locale}/contribute`)}
+        class="text-sm text-slate-500 hover:text-slate-900 hover:underline dark:text-slate-400 dark:hover:text-slate-100"
+      >
+        Contribute
+      </a>
+      <a
         href={withBase(`/${locale}/search`)}
         class="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-900 hover:underline dark:text-slate-400 dark:hover:text-slate-100"
       >
