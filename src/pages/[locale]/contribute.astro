@@ -18,6 +18,7 @@ const { locale } = Astro.params;
 const contributingUrl = `${repoUrl}/blob/main/CONTRIBUTING.md`;
 const codeOfConductUrl = `${repoUrl}/blob/main/CODE_OF_CONDUCT.md`;
 const discussionsUrl = `${repoUrl}/discussions`;
+const goodFirstIssuesUrl = `${repoUrl}/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22`;
 ---
 
 <Layout
@@ -39,6 +40,21 @@ const discussionsUrl = `${repoUrl}/discussions`;
       CONTRIBUTING.md
     </a>{' '}
     for the full guide.
+  </p>
+
+  <p
+    class="mt-6 rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400"
+  >
+    New here? Browse{' '}
+    <a
+      href={goodFirstIssuesUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="underline"
+    >
+      good first issues
+    </a>{' '}
+    on GitHub for approachable, well-scoped tasks to start with.
   </p>
 
   <div class="mt-8 space-y-8">
